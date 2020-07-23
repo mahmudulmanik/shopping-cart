@@ -2,81 +2,154 @@
 <html>
 
 <head>
-   <title>Shopping Cart</title>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
-   <link href="style.css" rel="stylesheet">
+    <title>Shopping Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
 
-   <section>
-      <div class="container">
-         <div class="cart">
-            <div class="col-md-12 col-lg-10 mx-auto">
-               <div class="cart-item">
-                  <div class="row">
-                     <div class="col-md-7 center-item">
-                        <img src="images/product-1.png" alt="">
-                        <h5>iPhone 11 128GB Black</h5>
-                     </div>
+    <section>
+        <div class="container">
+            <div class="cart">
+                <div class="col-md-12 col-lg-10 mx-auto">
+                    <div class="cart-item">
+                        <div class="row">
+                            <div class="col-md-7 center-item">
+                                <img src="images/product-1.png" alt="">
+                                <h5>iPhone 11 128GB Black</h5>
+                            </div>
 
-                     <div class="col-md-5 center-item">
-                        <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                            <div class="col-md-5 center-item">
+                                <div class="input-group number-spinner">
+                                    <button id="minusQuantity1" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" id="quantity1" class="form-control text-center" value="1">
+                                    <button id="plusQuantity1" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <h5>$ <span id="currentAmount">1219</span></h5>
+                                <img src="images/remove.png" alt="" class="remove-item">
+                            </div>
                         </div>
-                        <h5>$1219</h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
-                     </div>
-                  </div>
-               </div>
+                    </div>
 
-               <div class="cart-item">
-                  <div class="row">
-                     <div class="col-md-7 center-item mx-auto">
-                        <img src="images/product-2.png" alt="">
-                        <h5>iPhone 11 Silicone Case - Black</h5>
-                     </div>
-                     <div class="col-md-5 center-item">
-                        <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <div class="cart-item">
+                        <div class="row">
+                            <div class="col-md-7 center-item mx-auto">
+                                <img src="images/product-2.png" alt="">
+                                <h5>iPhone 11 Silicone Case - Black</h5>
+                            </div>
+                            <div class="col-md-5 center-item">
+                                <div class="input-group number-spinner">
+                                    <button id="minusQuantity2" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" id="quantity2" class="form-control text-center" value="1">
+                                    <button id="plusQuantity2" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
+                                </div>
+                                <h5>$ <span id="currentAmount2">59</span></h5>
+                                <img src="images/remove.png" alt="" class="remove-item">
+                            </div>
                         </div>
-                        <h5>$59</h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
-                     </div>
-                  </div>
-               </div>
+                    </div>
 
-               <div class="cart-item">
-                  <div class="row">
+                    <div class="cart-item">
+                        <div class="row">
 
-                     <div class="col-md-8">
-                        <h5>Subtotal: </h5>
-                        <h5>Tax:</h5>
-                        <h5>Total:</h5>
-                     </div>
+                            <div class="col-md-8">
+                                <h5>Subtotal: </h5>
+                                <h5>Tax:</h5>
+                                <h5>Total:</h5>
+                            </div>
 
-                     <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
-               </div>
+                            <div class="col-md-4 status">
+                                <h5>$ <span id="currentSubTotalAmount">1278</span></h5>
+                                <h5>$0</h5>
+                                <h5>$ <span id="currentTotalAmount">1278</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-4 pb-4">
+                        <button type="button" class="btn btn-success check-out">Check Out</button>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </section>
+        </div>
+    </section>
+
+    <script>
+        // plus item
+        const plusBtn1 = document.getElementById("plusQuantity1").addEventListener("click", function() {
+            addValue("quantity1");
+            addPrice1("currentAmount");
+            addPrice1("currentSubTotalAmount");
+            addPrice1("currentTotalAmount");
+
+        })
+        const plusBtn2 = document.getElementById("plusQuantity2").addEventListener("click", function() {
+            addValue("quantity2");
+            addPrice2("currentAmount2");
+            addPrice2("currentSubTotalAmount");
+            addPrice2("currentTotalAmount");
+        })
+
+        //minus item
+        const minusBtn1 = document.getElementById("minusQuantity1").addEventListener("click", function() {
+            minusValue("quantity1");
+            minusPrice1("currentAmount");
+            minusPrice1("currentSubTotalAmount");
+            minusPrice1("currentTotalAmount");
+        })
+
+        const minusBtn2 = document.getElementById("minusQuantity2").addEventListener("click", function() {
+            minusValue("quantity2");
+            minusPrice2("currentAmount2");
+            minusPrice2("currentSubTotalAmount");
+            minusPrice2("currentTotalAmount");
+
+        })
+
+
+        ////---------Function area-------------
+        function addValue(id) {
+            const totalQuantity1 = parseFloat(document.getElementById(id).value) + 1;
+            document.getElementById(id).value = totalQuantity1;
+            return totalQuantity1;
+        }
+
+        function minusValue(id) {
+            const totalQuantity2 = parseFloat(document.getElementById(id).value) - 1;
+            document.getElementById(id).value = totalQuantity2;
+            return totalQuantity2;
+        }
+
+        function addPrice1(id) {
+            const priceValue1 = parseFloat(document.getElementById(id).innerText) + 1219;
+            document.getElementById(id).innerText = priceValue1;
+            return priceValue1;
+        }
+
+        function minusPrice1(id) {
+            const priceValue2 = parseFloat(document.getElementById(id).innerText) - 1219;
+            document.getElementById(id).innerText = priceValue2;
+            return priceValue2;
+        }
+
+        function addPrice2(id) {
+            const priceValue3 = parseFloat(document.getElementById(id).innerText) + 59;
+            document.getElementById(id).innerText = priceValue3;
+            return priceValue3;
+        }
+
+        function minusPrice2(id) {
+            const priceValue4 = parseFloat(document.getElementById(id).innerText) - 59;
+            document.getElementById(id).innerText = priceValue4;
+            return priceValue4;
+        }
+    </script>
+
+
 </body>
 
 </html>
